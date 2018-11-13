@@ -13,7 +13,7 @@ import orderReducer from "./store/reducers/order";
 import burgerBuilderReducer from "./store/reducers/burgerBuilder";
 import authReducer from "./store/reducers/auth";
 // import {logoutSaga} from "./store/sagas/auth";                // with the listener we don't need it anymore
-import { watchAuth } from "./store/sagas/index";
+import { watchAuth, watchBurgerBuilder, watchOrder } from "./store/sagas/index";
 
 const composeEnhancers =
     process.env.NODE_ENV === "development" ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
@@ -30,6 +30,8 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, s
 
 // sagaMiddleware.run(logoutSaga);
 sagaMiddleware.run(watchAuth);
+sagaMiddleware.run(watchBurgerBuilder);
+sagaMiddleware.run(watchOrder);
 
 // const store = createStore(burgerBuilderReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 

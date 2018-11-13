@@ -29,13 +29,16 @@ export const setIngredients = (ingredients) => {
 };
 
 export const initIngredients = () => {
-    return (dispatch) => {
-        axios.get('/ingredients.json')
-            .then((response) => {
-                dispatch(setIngredients(response.data))
-            })
-            .catch((e) => {
-                dispatch(fetchIngredientsFailed())
-            })
+    // return (dispatch) => {
+    //     axios.get('/ingredients.json')
+    //         .then((response) => {
+    //             dispatch(setIngredients(response.data))
+    //         })
+    //         .catch((e) => {
+    //             dispatch(fetchIngredientsFailed())
+    //         })
+    // }
+    return {
+        type: actionTypes.INIT_INGREDIENTS
     }
 };
